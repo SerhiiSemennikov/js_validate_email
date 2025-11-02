@@ -56,8 +56,8 @@ describe(`Function 'validateEmail':`, () => {
   it(`'!$%&'*+/=?^{|}~' are not allowed in personal_info part`, () => {
     const characters = `!$%&*+/=?^{|}~`;
 
-    characters.split('').forEach((char, index) => {
-      const testEmail = 'test838' + char[index] + '@gmail.com';
+    characters.split('').forEach((char) => {
+      const testEmail = 'test838' + char + '@gmail.com';
 
       expect(validateEmail(testEmail)).toBeFalsy();
     });
