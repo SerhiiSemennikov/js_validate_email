@@ -38,7 +38,7 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`personal_info can NOT contain character '.' at the end`, () => {
-    expect(validateEmail('--.--.--.--.@gmail.com.')).toBeFalsy();
+    expect(validateEmail('mymail2.@gmailcom')).toBeFalsy();
   });
 
   it(`double dots are not allowed in personal_info part`, () => {
@@ -53,8 +53,8 @@ describe(`Function 'validateEmail':`, () => {
     expect(validateEmail('test838@.gmail.com')).toBeFalsy();
   });
 
-  it(`'!$%&'*+/=?^{|}~' are not allowed in personal_info part`, () => {
-    const characters = `!$%&*+/=?^{|}~`;
+  it(`'!$%&*+/=?^{|}~' are not allowed in personal_info part`, () => {
+    const characters = `'!$%&*+/=?^{|}~`;
 
     characters.split('').forEach((char) => {
       const testEmail = 'test838' + char + '@gmail.com';
@@ -64,7 +64,7 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it('domain can contain letters, digits, hyphens, and dots', () => {
-    expect(validateEmail('personal_part@g-m-a159il.com.')).toBeTruthy();
+    expect(validateEmail('personal_part@g-m-a159il.com')).toBeTruthy();
   });
 
   it("valid email return 'true'", () => {
