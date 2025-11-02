@@ -14,27 +14,27 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`should return 'true' for the valid email`, () => {
-    expect(validateEmail('test838@gmail.com.')).toBeTruthy();
+    expect(validateEmail('test838@gmail.com')).toBeTruthy();
   });
 
   it(`personal_info can contain English letters (Aa-Zz)`, () => {
-    expect(validateEmail('bvjGhvKnmvBnmLvm@gmail.com.')).toBeTruthy();
+    expect(validateEmail('bvjGhvKnmvBnmLvm@gmail.com')).toBeTruthy();
   });
 
   it(`personal_info can contain digits`, () => {
-    expect(validateEmail('1234567890@gmail.com.')).toBeTruthy();
+    expect(validateEmail('1234567890@gmail.com')).toBeTruthy();
   });
 
   it(`personal_info can contain characters: - _`, () => {
-    expect(validateEmail('-_@gmail.com.')).toBeTruthy();
+    expect(validateEmail('-_@gmail.com')).toBeTruthy();
   });
 
   it(`personal_info can contain character '.'`, () => {
-    expect(validateEmail('--.--.--.--@gmail.com.')).toBeTruthy();
+    expect(validateEmail('--.--.--.--@gmail.com')).toBeTruthy();
   });
 
   it(`personal_info can NOT contain character '.' at first place`, () => {
-    expect(validateEmail('.--.--.--.--@gmail.com.')).toBeFalsy();
+    expect(validateEmail('.--.--.--.--@gmail.com')).toBeFalsy();
   });
 
   it(`personal_info can NOT contain character '.' at the end`, () => {
@@ -42,22 +42,22 @@ describe(`Function 'validateEmail':`, () => {
   });
 
   it(`double dots are not allowed in personal_info part`, () => {
-    expect(validateEmail('--..--.--.--@gmail.com.')).toBeFalsy();
+    expect(validateEmail('--..--.--.--@gmail.com')).toBeFalsy();
   });
 
   it(`@ is required`, () => {
-    expect(validateEmail('test838gmail.com.')).toBeFalsy();
+    expect(validateEmail('test838gmail.com')).toBeFalsy();
   });
 
   it(`domain can NOT start with dot '.'`, () => {
-    expect(validateEmail('test838@.gmail.com.')).toBeFalsy();
+    expect(validateEmail('test838@.gmail.com')).toBeFalsy();
   });
 
   it(`'!$%&'*+/=?^{|}~' are not allowed in personal_info part`, () => {
     const characters = `!$%&*+/=?^{|}~`;
 
-    characters.split().forEach((char, index) => {
-      const testEmail = 'test838' + char[index] + '@gmail.com.';
+    characters.split('').forEach((char, index) => {
+      const testEmail = 'test838' + char[index] + '@gmail.com';
 
       expect(validateEmail(testEmail)).toBeFalsy();
     });
